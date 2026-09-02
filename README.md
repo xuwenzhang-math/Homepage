@@ -21,5 +21,3 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 ## Migration note
 
 The BV / finite-perimeter course remains hosted on the original Google Sites site and is linked from `teaching.html`.
-
-The homepage visitor counter is provided by VisitorBadge.io.

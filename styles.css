@@ -1,2 +1,24 @@
 :root{--fg:#202124;--muted:#5f6368;--link:#0645ad;--border:#e5e7eb;--max:900px}
-*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--fg);font-family:'Times New Roman',Times,serif;line-height:1.65;font-size:20px}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:var(--max);margin:0 auto;padding:46px 28px 76px}h1{font-size:44px;line-height:1.15;margin:0 0 14px;font-weight:600}h2{font-size:32px;margin:46px 0 16px;border-bottom:1px solid var(--border);padding-bottom:6px}h3{font-size:25px;margin:28px 0 10px}p{margin:12px 0}.meta{color:var(--muted)}nav{margin:22px 0 34px;font-size:19px}nav a{margin-right:24px}.compact{padding-left:25px}.compact li{margin:9px 0}.pubs{padding-left:25px}.pubs li{margin:13px 0}.footer{display:none}.visit-count{margin-top:58px;min-height:20px;text-align:right}.visit-count img{display:inline-block;height:20px;width:auto;vertical-align:middle}.section-links{margin-top:16px}.section-links a{margin-right:17px}.small{font-size:17px}.nowrap{white-space:nowrap}@media(max-width:650px){body{font-size:18px}.wrap{padding:28px 20px 58px}h1{font-size:36px}h2{font-size:28px}h3{font-size:22px}nav{font-size:18px}nav a{display:inline-block;margin:0 16px 8px 0}}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--fg);font-family:'Times New Roman',Times,serif;line-height:1.65;font-size:20px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:46px 28px 76px}
+h1{font-size:44px;line-height:1.15;margin:0 0 14px;font-weight:600}
+h2{font-size:32px;margin:46px 0 16px;border-bottom:1px solid var(--border);padding-bottom:6px}
+h3{font-size:25px;margin:28px 0 10px}
+p{margin:12px 0}
+.meta{color:var(--muted)}
+nav{margin:22px 0 34px;font-size:19px}
+nav a{margin-right:24px}
+.compact{padding-left:25px}
+.compact li{margin:9px 0}
+.pubs{padding-left:25px}
+.pubs>li{margin:13px 0}
+.pub-notes{margin-top:5px;padding-left:28px}
+.pub-notes li{margin:3px 0}
+.section-links{margin-top:16px}
+.section-links a{margin-right:17px}
+.small{font-size:17px}
+.nowrap{white-space:nowrap}
+@media(max-width:650px){body{font-size:18px}.wrap{padding:28px 20px 58px}h1{font-size:36px}h2{font-size:28px}h3{font-size:22px}nav{font-size:18px}nav a{display:inline-block;margin:0 16px 8px 0}}
