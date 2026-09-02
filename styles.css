@@ -9,8 +9,8 @@ h2{font-size:32px;margin:46px 0 16px;border-bottom:1px solid var(--border);paddi
 h3{font-size:25px;margin:28px 0 10px}
 p{margin:12px 0}
 .meta{color:var(--muted)}
-nav{margin:22px 0 34px;font-size:19px}
-nav a{margin-right:24px}
+nav{margin:22px 0 34px;font-size:25px}
+nav a{display:inline-block;margin-right:32px;padding:6px 0}
 .compact{padding-left:25px}
 .compact li{margin:9px 0}
 .pubs{padding-left:25px}
@@ -21,4 +21,4 @@ nav a{margin-right:24px}
 .section-links a{margin-right:17px}
 .small{font-size:17px}
 .nowrap{white-space:nowrap}
-@media(max-width:650px){body{font-size:18px}.wrap{padding:28px 20px 58px}h1{font-size:36px}h2{font-size:28px}h3{font-size:22px}nav{font-size:18px}nav a{display:inline-block;margin:0 16px 8px 0}}
+@media(max-width:650px){body{font-size:18px}.wrap{padding:28px 20px 58px}h1{font-size:36px}h2{font-size:28px}h3{font-size:22px}nav{font-size:22px}nav a{margin:0 20px 8px 0;padding:5px 0}}
