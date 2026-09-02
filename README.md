@@ -16,6 +16,7 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 - `research.html` — research, publications, talks, dissertations, service
 - `teaching.html` — teaching history
 - `styles.css` — shared responsive styling
+- `profile.jpg` — homepage portrait
 - `.nojekyll` — serve files directly without Jekyll processing
 
 ## Migration note
