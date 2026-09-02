@@ -15,10 +15,11 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 - `index.html` — homepage
 - `research.html` — research, publications, talks, dissertations, service
 - `teaching.html` — teaching history
-- `bv-course.html` — BV / finite-perimeter course page
 - `styles.css` — shared responsive styling
 - `.nojekyll` — serve files directly without Jekyll processing
 
 ## Migration note
 
-The original Google Sites portrait is currently referenced by its public Googleusercontent URL so the visible image remains the same. For maximum long-term independence, download your own portrait into the repository (for example `assets/profile.jpg`) and replace the `src` in `index.html`.
+The BV / finite-perimeter course remains hosted on the original Google Sites site and is linked from `teaching.html`.
+
+The homepage visitor counter is provided by VisitorBadge.io.
