@@ -17,6 +17,9 @@ nav a:last-child{margin-right:0}
 .site-header h1{margin:0}
 .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:56px;align-items:start}
 .home-intro>p:first-child{margin-top:0}
+.motto{width:100%;margin:46px 0 0;padding:0 0 0 24px;border-left:2px solid var(--border);color:#3f3f46}
+.motto p{margin:0;font-style:italic;line-height:1.6}
+.motto-attribution{font-style:normal;white-space:nowrap}
 .profile-card{width:100%;justify-self:end}
 .profile-photo{display:block;width:100%;height:auto}
 .profile-contact{font-size:18px;line-height:1.45;margin-top:18px}
