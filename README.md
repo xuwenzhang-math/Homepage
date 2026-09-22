@@ -15,6 +15,9 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 - `index.html` — homepage
 - `research.html` — research, publications, talks, dissertations, service
 - `teaching.html` — teaching history
+- `notes.html` — mathematical notes, organized by category
+- `immersed-disk-triple-boundary.html` — an immersed disk example
+- `central-patch.html` — parameter disk and interactive central-patch diagram
 - `styles.css` — shared responsive styling
 - `profile.jpg` — homepage portrait
 - `.nojekyll` — serve files directly without Jekyll processing
