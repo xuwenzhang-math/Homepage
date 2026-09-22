@@ -9,10 +9,14 @@
 :root{color-scheme:light;--foreground:#202124;--viz-series-1:#339cff;--viz-series-2:#f3883b;--viz-series-3:#5dc977}
 *{box-sizing:border-box}
 body{margin:0;padding:18px;background:#fff;color:var(--foreground);font-family:'Times New Roman',Times,serif;font-size:18px;line-height:1.45}
-.diagram-grid{display:grid;grid-template-columns:minmax(0,0.9fr) 44px minmax(0,1.65fr) minmax(0,1.65fr);gap:8px;align-items:start}
+.diagram-grid{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,2fr);column-gap:16px;row-gap:18px;align-items:start;max-width:720px;margin:0 auto}
 .diagram-grid figure{margin:0;min-width:0}
+.parameter-panel{grid-column:1;grid-row:1}
+.map-arrow{grid-column:2;grid-row:1}
+.full-panel{grid-column:3;grid-row:1}
+.central-panel{grid-column:3;grid-row:2}
 .diagram-grid figcaption{text-align:center;line-height:1.35;margin-top:6px}
-.disk-stage,.map-arrow{height:400px;display:flex;align-items:center;justify-content:center}
+.disk-stage,.map-arrow{height:250px;display:flex;align-items:center;justify-content:center}
 .disk-stage svg{display:block;width:100%;max-width:190px;height:auto}
 .map-arrow svg{display:block;width:100%;height:auto}
 .boundary-label{position:absolute;font-style:italic;font-size:22px;line-height:1;transform:translate(-50%,0);pointer-events:none}
@@ -26,25 +30,27 @@ body{margin:0;padding:18px;background:#fff;color:var(--foreground);font-family:'
 .form-check{display:flex;align-items:center;gap:7px;min-height:36px}
 .form-check-input{width:17px;height:17px;margin:0}
 input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offset:3px}
-@media(max-width:600px){body{padding:14px;font-size:17px}.diagram-grid{grid-template-columns:minmax(0,1fr) 34px minmax(0,1.7fr);gap:4px}.disk-stage,.map-arrow{height:210px}.central-panel{grid-column:1/-1;margin-top:18px!important}.diagram-grid figcaption{font-size:16px}.diagram-note{text-align:center}.viz-controls{gap:12px 18px}.form-range{width:150px}}
+@media(max-width:600px){body{padding:14px;font-size:17px}.diagram-grid{grid-template-columns:minmax(0,0.8fr) 28px minmax(0,1.7fr);column-gap:6px}.disk-stage,.map-arrow{height:180px}.diagram-grid figcaption{font-size:16px}.diagram-note{text-align:center}.viz-controls{gap:12px 18px}.form-range{width:150px}}
 </style>
 </head>
 <body>
 <div id="central-patch-enlarged">
   <style>
     #central-patch-enlarged { color: var(--foreground); }
-    #central-patch-enlarged .patch-stage { position: relative; width: 100%; height: 400px; }
+    #central-patch-enlarged .patch-stage { position: relative; width: 100%; }
+    #central-patch-enlarged .full-stage { height: 250px; }
+    #central-patch-enlarged .central-stage { height: 340px; }
     #central-patch-enlarged .patch-stage canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
     #central-patch-enlarged .patch-stage canvas:active { cursor: grabbing; }
     #central-patch-enlarged .patch-loading { position: absolute; inset: 0; display: grid; place-items: center; }
     #central-patch-enlarged .patch-loading[hidden] { display: none; }
     @media (max-width: 600px) {
-      #central-patch-enlarged .full-stage { height: 210px; }
-      #central-patch-enlarged .central-stage { height: 300px; }
+      #central-patch-enlarged .full-stage { height: 180px; }
+      #central-patch-enlarged .central-stage { height: 240px; }
     }
   </style>
   <div class="diagram-grid">
-    <figure>
+    <figure class="parameter-panel">
       <div class="disk-stage">
         <svg viewBox="0 0 200 200" role="img" aria-label="The closed unit parameter disk D, divided into three sectors: blue at the upper right, orange at the left, and green at the lower right.">
           <path d="M100 100 L180 100 A80 80 0 0 0 60 30.718 Z" fill="var(--viz-series-1)"/>
@@ -63,7 +69,7 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
         <path d="M5 45 H65 M54 37 L65 45 L54 53" fill="none" stroke="var(--foreground)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <figure>
+    <figure class="full-panel">
       <div class="patch-stage full-stage" role="img" aria-label="The full immersed image F of the closed unit disk. The boundary image is the circle gamma, covered three times by the boundary immersion. Colors correspond to the sectors of the parameter disk. Drag to rotate.">
         <div class="patch-loading" data-loading>Rendering the immersed image…</div>
         <span class="boundary-label" aria-hidden="true">γ</span>
