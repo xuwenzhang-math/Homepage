@@ -31,10 +31,13 @@ nav a:last-child{margin-right:0}
 .pub-notes li{margin:3px 0}
 .section-links{margin-top:16px}
 .section-links a{margin-right:17px}
-.notes-categories{list-style:none;margin:0;padding:0}
-.notes-categories li{margin:28px 0}
+.notes-categories{margin:0;padding:0}
+.notes-categories>section{margin:28px 0}
 .notes-categories h3{margin:0 0 6px}
 .notes-categories p{margin:0}
+.notes-items{list-style:disc;margin:30px 0 0;padding-left:25px}
+.notes-items>li{margin:14px 0}
+.notes-items p{margin-top:14px}
 .math-example{margin-top:30px}
 .math-example h4{font-size:22px;line-height:1.4;margin:0 0 18px}
 .math-example p{margin:14px 0}
@@ -47,5 +50,6 @@ nav a:last-child{margin-right:0}
 .page-meta{margin-top:52px;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:16px;text-align:right}
 .page-meta p{margin:0}
 @media(max-width:1000px){.home-grid{grid-template-columns:minmax(0,1fr) 230px;gap:40px}}
-@media(max-width:480px){.math-example h4{font-size:21px}.math-display{font-size:16px}.example-figure iframe{height:640px}}
+@media(max-width:680px){.example-figure iframe{height:850px}}
+@media(max-width:480px){.math-example h4{font-size:21px}.math-display{font-size:16px}}
 @media(max-width:820px){body{font-size:18px}.wrap{padding:28px 20px 58px}h1{font-size:36px}h2{font-size:28px}h3{font-size:22px}.site-header{flex-direction:column;gap:14px;margin-bottom:28px}.site-header nav{margin-left:0}nav{font-size:22px;margin:0;white-space:normal}nav a{margin:0 20px 8px 0;padding:5px 0}.home-grid{grid-template-columns:1fr;gap:34px}.profile-card{max-width:250px;justify-self:start}.profile-contact{font-size:17px}}

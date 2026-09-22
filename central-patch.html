@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Central patch of an immersed disk</title>
+<title>An immersed disk and its enlarged central patch</title>
 <style>
 :root{color-scheme:light;--foreground:#202124;--viz-series-1:#339cff;--viz-series-2:#f3883b;--viz-series-3:#5dc977}
 *{box-sizing:border-box}
 body{margin:0;padding:18px;background:#fff;color:var(--foreground);font-family:'Times New Roman',Times,serif;font-size:18px;line-height:1.45}
-.diagram-grid{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,2.4fr);gap:8px;align-items:start}
+.diagram-grid{display:grid;grid-template-columns:minmax(0,0.9fr) 44px minmax(0,1.65fr) minmax(0,1.65fr);gap:8px;align-items:start}
 .diagram-grid figure{margin:0;min-width:0}
 .diagram-grid figcaption{text-align:center;line-height:1.35;margin-top:6px}
 .disk-stage,.map-arrow{height:400px;display:flex;align-items:center;justify-content:center}
 .disk-stage svg{display:block;width:100%;max-width:190px;height:auto}
 .map-arrow svg{display:block;width:100%;height:auto}
+.boundary-label{position:absolute;font-style:italic;font-size:22px;line-height:1;transform:translate(-50%,0);pointer-events:none}
 .diagram-note{text-align:right;margin:10px 0 0}
 .text-small{font-size:16px}
 .text-muted{color:#5f6368}
@@ -25,7 +26,7 @@ body{margin:0;padding:18px;background:#fff;color:var(--foreground);font-family:'
 .form-check{display:flex;align-items:center;gap:7px;min-height:36px}
 .form-check-input{width:17px;height:17px;margin:0}
 input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offset:3px}
-@media(max-width:480px){body{padding:14px;font-size:17px}.diagram-grid{grid-template-columns:minmax(0,1fr) 34px minmax(0,2.4fr);gap:4px}.disk-stage,.map-arrow{height:300px}.diagram-grid figcaption{font-size:16px}.viz-controls{gap:12px 18px}.form-range{width:170px}}
+@media(max-width:600px){body{padding:14px;font-size:17px}.diagram-grid{grid-template-columns:minmax(0,1fr) 34px minmax(0,1.7fr);gap:4px}.disk-stage,.map-arrow{height:210px}.central-panel{grid-column:1/-1;margin-top:18px!important}.diagram-grid figcaption{font-size:16px}.diagram-note{text-align:center}.viz-controls{gap:12px 18px}.form-range{width:150px}}
 </style>
 </head>
 <body>
@@ -37,7 +38,10 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
     #central-patch-enlarged .patch-stage canvas:active { cursor: grabbing; }
     #central-patch-enlarged .patch-loading { position: absolute; inset: 0; display: grid; place-items: center; }
     #central-patch-enlarged .patch-loading[hidden] { display: none; }
-    @media (max-width: 480px) { #central-patch-enlarged .patch-stage { height: 300px; } }
+    @media (max-width: 600px) {
+      #central-patch-enlarged .full-stage { height: 210px; }
+      #central-patch-enlarged .central-stage { height: 300px; }
+    }
   </style>
   <div class="diagram-grid">
     <figure>
@@ -60,15 +64,22 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
       </svg>
     </div>
     <figure>
-      <div class="patch-stage" role="img" aria-label="Central patch of the immersed disk, with parameter radius at most 0.46. Colors distinguish three sectors of the same parameter disk. The edge is a cut edge, not the original boundary. Drag to rotate or use the view controls below.">
+      <div class="patch-stage full-stage" role="img" aria-label="The full immersed image F of the closed unit disk. The boundary image is the circle gamma, covered three times by the boundary immersion. Colors correspond to the sectors of the parameter disk. Drag to rotate.">
+        <div class="patch-loading" data-loading>Rendering the immersed image…</div>
+        <span class="boundary-label" aria-hidden="true">γ</span>
+      </div>
+      <figcaption>Immersed image</figcaption>
+    </figure>
+    <figure class="central-panel">
+      <div class="patch-stage central-stage" role="img" aria-label="Central patch of the immersed disk, with parameter radius at most 0.46. Colors distinguish three sectors of the same parameter disk. The edge is a cut edge, not the original boundary. Drag to rotate or use the view controls below.">
         <div class="patch-loading" data-loading>Rendering the central patch…</div>
       </div>
       <figcaption>Central patch (enlarged)</figcaption>
     </figure>
   </div>
-  <p class="diagram-note text-small text-muted">Central patch: parameter radius 0.46 · Equal axis scales</p>
+  <p class="diagram-note text-small text-muted">Full image: parameter radius 1 · Central patch: parameter radius 0.46 · Equal axis scales</p>
   <div class="viz-controls">
-    <label class="form-label">View
+    <label class="form-label">Central patch view
       <select class="form-select" data-view aria-label="Choose a viewing direction">
         <option value="oblique">Oblique</option>
         <option value="top">Top</option>
@@ -84,11 +95,12 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
   <script>
     (async () => {
       const root = document.getElementById('central-patch-enlarged');
-      const stage = root.querySelector('.patch-stage');
-      const loading = root.querySelector('[data-loading]');
       try {
         const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js');
-        const TAU = 2 * Math.PI, radius = 0.46;
+        function mountSurface(stage, radius, hasControls) {
+        const loading = stage.querySelector('[data-loading]');
+        const boundaryLabel = stage.querySelector('.boundary-label');
+        const TAU = 2 * Math.PI;
         let yaw = -0.8, pitch = 0.43, zoom = 1, drag = null;
         const view = root.querySelector('[data-view]');
         const zoomInput = root.querySelector('[data-zoom]');
@@ -161,7 +173,10 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
         }
         const edgePoints = [];
         for (let i = 0; i < 768; ++i) {
-          const theta = TAU*i/768; edgePoints.push(F(radius*Math.cos(theta), radius*Math.sin(theta)));
+          const theta = TAU*i/768;
+          edgePoints.push(radius === 1
+            ? new THREE.Vector3(Math.cos(theta), Math.sin(theta), 0)
+            : F(radius*Math.cos(theta), radius*Math.sin(theta)));
         }
         const edgeMaterial = new THREE.MeshBasicMaterial({color: theme('--foreground')});
         const edgeCurve = new THREE.CatmullRomCurve3(edgePoints, true, 'centripetal');
@@ -176,19 +191,28 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
           camera.position.set(center.x+size*6*Math.cos(pitch)*Math.cos(yaw),
             center.y+size*6*Math.cos(pitch)*Math.sin(yaw), center.z+size*6*Math.sin(pitch));
           camera.lookAt(center); renderer.render(scene, camera);
+          if (boundaryLabel) {
+            const anchor = new THREE.Vector3(Math.cos(yaw), Math.sin(yaw), 0).project(camera);
+            boundaryLabel.style.left = `${(anchor.x+1)*stage.clientWidth/2}px`;
+            boundaryLabel.style.top = `${(1-anchor.y)*stage.clientHeight/2+5}px`;
+          }
         }
-        view.addEventListener('change', () => {
+        if (hasControls) view.addEventListener('change', () => {
           if (view.value === 'oblique') { yaw = -0.8; pitch = 0.43; }
           if (view.value === 'top') { yaw = -Math.PI/2; pitch = Math.PI/2-0.0001; }
           if (view.value === 'side') { yaw = -Math.PI/2; pitch = 0; }
           render();
         });
         function updateZoom(value) {
-          zoom = Math.max(0.7, Math.min(2.5, value)); zoomInput.value = zoom.toFixed(2);
-          root.querySelector('[data-zoom-label]').textContent = `${zoom.toFixed(2)}×`; render();
+          zoom = Math.max(0.7, Math.min(2.5, value));
+          if (hasControls) {
+            zoomInput.value = zoom.toFixed(2);
+            root.querySelector('[data-zoom-label]').textContent = `${zoom.toFixed(2)}×`;
+          }
+          render();
         }
-        zoomInput.addEventListener('input', () => updateZoom(Number(zoomInput.value)));
-        transparent.addEventListener('change', () => {
+        if (hasControls) zoomInput.addEventListener('input', () => updateZoom(Number(zoomInput.value)));
+        if (hasControls) transparent.addEventListener('change', () => {
           materials.forEach(m => { m.transparent = transparent.checked; m.opacity = transparent.checked ? 0.28 : 1;
             m.depthWrite = !transparent.checked; m.needsUpdate = true; });
           render();
@@ -200,7 +224,9 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
           if (!drag) return;
           yaw -= (e.clientX-drag[0])*0.007;
           pitch = Math.max(-Math.PI/2+0.0001, Math.min(Math.PI/2-0.0001, pitch+(e.clientY-drag[1])*0.007));
-          drag = [e.clientX, e.clientY]; view.value = 'free'; render();
+          drag = [e.clientX, e.clientY];
+          if (hasControls) view.value = 'free';
+          render();
         });
         renderer.domElement.addEventListener('pointerup', () => { drag = null; });
         renderer.domElement.addEventListener('pointercancel', () => { drag = null; });
@@ -214,8 +240,15 @@ input:focus-visible,select:focus-visible{outline:2px solid #0645ad;outline-offse
         new MutationObserver(recolor).observe(document.documentElement, {attributes: true, attributeFilter: ['class', 'style', 'data-theme']});
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', recolor);
         resize(); loading.hidden = true;
+        }
+        mountSurface(root.querySelector('.full-stage'), 1, false);
+        mountSurface(root.querySelector('.central-stage'), 0.46, true);
       } catch (error) {
-        loading.textContent = 'The 3D view could not load. Please reload the page.'; loading.setAttribute('role', 'alert'); console.error(error);
+        root.querySelectorAll('[data-loading]:not([hidden])').forEach(loading => {
+          loading.textContent = 'The 3D view could not load. Please reload the page.';
+          loading.setAttribute('role', 'alert');
+        });
+        console.error(error);
       }
     })();
   </script>
