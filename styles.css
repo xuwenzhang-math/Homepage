@@ -38,6 +38,9 @@ nav a:last-child{margin-right:0}
 .notes-items{list-style:disc;margin:30px 0 0;padding-left:25px}
 .notes-items>li{margin:14px 0}
 .notes-items p{margin-top:14px}
+.notes-subcategory{margin-top:28px}
+.notes-subcategory .notes-items{margin-top:14px}
+.notes-subcategory h4{font-size:22px;line-height:1.5;margin:0 0 6px}
 .math-example{margin-top:30px}
 .math-example h4{font-size:22px;line-height:1.4;margin:0 0 18px}
 .math-example p{margin:14px 0}
