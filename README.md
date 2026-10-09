@@ -14,7 +14,14 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 
 - `index.html` — homepage
 - `research.html` — research, publications, dissertations, service
-- `talks.html` — selected talks and presentation slides
+- `talks.html` — talks grouped by topic, with expandable abstracts, related papers, and slides
+- `talks.css`, `talk-slides.js` — Talks layout and inline PDF pagination
+- `sheeting-theorem-slides.pdf` — slides for the sheeting theorem topic
+- `capillary-varifolds-slides.pdf` — slides for the capillary surfaces and varifolds topic
+- `bounding-area-prescribed-boundary-slides.pdf` — slides for the area bounds with prescribed boundary topic
+- `willmore-inequalities-boundary-slides.pdf` — slides for the Willmore inequalities with boundary topic
+- `alexandrov-capillary-cmc-abstract.pdf`, `alexandrov-capillary-cmc-slides.pdf` — abstract and slides for the Alexandrov-type theorem topic
+- `pdfjs.mjs`, `pdfjs.worker.mjs`, `pdfjs-LICENSE.txt` — PDF.js 5.6.205 and its Apache 2.0 license
 - `teaching.html` — teaching history
 - `notes.html` — mathematical notes, organized by category
 - `immersed-disk-triple-boundary.html` — an immersed disk example
