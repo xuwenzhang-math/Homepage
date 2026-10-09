@@ -19,7 +19,7 @@ nav a:last-child{margin-right:0}
 .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:56px;align-items:start}
 .home-intro>p:first-child{margin-top:0}
 .profile-card{width:100%;justify-self:end}
-.profile-photo{display:block;width:100%;height:auto}
+.profile-photo{display:block;width:210px;max-width:100%;height:auto;margin-inline:auto}
 .profile-contact{font-size:18px;line-height:1.45;margin-top:18px}
 .profile-contact p{margin:0 0 14px}
 .profile-contact a{overflow-wrap:anywhere}
