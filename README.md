@@ -13,7 +13,8 @@ For a user site, name the repository `<github-username>.github.io`. For a projec
 ## Files
 
 - `index.html` — homepage
-- `research.html` — research, publications, talks, dissertations, service
+- `research.html` — research, publications, dissertations, service
+- `talks.html` — selected talks and presentation slides
 - `teaching.html` — teaching history
 - `notes.html` — mathematical notes, organized by category
 - `immersed-disk-triple-boundary.html` — an immersed disk example
