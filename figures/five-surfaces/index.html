@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Five-surface varifold and its cross cone</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
+  <script defer src="geometry.js"></script>
+  <script defer src="plot.js"></script>
+</head>
+<body>
+  <main>
+    <section class="figure-card" aria-label="Interactive three-dimensional figure">
+      <div class="figure-top">
+        <div><h1 id="plot-title">Five exact local pieces</h1><p>Drag to rotate · scroll to zoom · equal axis scales</p></div>
+        <button id="download" class="quiet-button">Save PNG</button>
+      </div>
+      <div class="figure-body">
+        <div class="plot-wrap">
+          <div id="plot" role="img" aria-label="Five colored surfaces meeting along a line and a tangent circular seam."></div>
+          <div id="fallback" hidden>
+            <img src="five_surfaces_3d.svg" alt="The five surfaces and their unique two-plane tangent cone.">
+            <p>The interactive figure is unavailable. This static image shows the example and its tangent cone.</p>
+          </div>
+          <noscript><img class="static-image" src="five_surfaces_3d.svg" alt="The five surfaces and their two-plane tangent cone."></noscript>
+        </div>
+        <aside class="controls" aria-label="Figure controls">
+          <div class="control-group">
+            <div class="scale-heading"><label for="scale">Blow-up scale</label><output id="scale-value">r = 0.400</output></div>
+            <input id="scale" type="range" min="0" max="2" step="0.04" value="0" aria-describedby="scale-help">
+            <div class="range-labels"><span>0.400</span><span>0.004</span></div>
+            <p id="scale-help" class="help">View [−r,r]³ enlarged by 1/r.</p>
+            <button id="limit" class="limit-button">Show the limiting cone</button>
+          </div>
+          <fieldset class="control-group surface-toggles">
+            <legend>Visible surfaces</legend>
+            <label><input type="checkbox" data-face="S" checked><span class="swatch film"></span><strong>S</strong><span>planar region</span></label>
+            <label><input type="checkbox" data-face="Pplus" checked><span class="swatch pplus"></span><strong>P<sub>+</sub></strong><span>half-plane</span></label>
+            <label><input type="checkbox" data-face="Pminus" checked><span class="swatch pminus"></span><strong>P<sub>−</sub></strong><span>half-plane</span></label>
+            <label><input type="checkbox" data-face="Cplus" checked><span class="swatch cplus"></span><strong>C<sub>+</sub></strong><span>catenoid</span></label>
+            <label><input type="checkbox" data-face="Cminus" checked><span class="swatch cminus"></span><strong>C<sub>−</sub></strong><span>catenoid</span></label>
+          </fieldset>
+          <div class="control-group view-controls">
+            <label class="check-row"><input type="checkbox" id="tangent">Tangent-plane wireframes</label>
+            <label class="check-row"><input type="checkbox" id="junctions" checked>Junction curves L and Γ</label>
+            <div class="view-buttons" aria-label="Camera views">
+              <button data-view="three" aria-label="Oblique three-dimensional view">3D</button>
+              <button data-view="x" aria-label="View along the x axis">Along x</button>
+              <button data-view="z" aria-label="View along the z axis">Along z</button>
+            </div>
+          </div>
+          <dl class="metrics">
+            <div><dt>Maximum film width</dt><dd id="film-width">—</dd></div>
+            <div><dt>Sampled distance to C</dt><dd id="cone-distance">—</dd></div>
+          </dl>
+          <p class="help metric-help">Lengths use scaled coordinates; the planar region has zero thickness.</p>
+        </aside>
+      </div>
+      <div class="figure-caption"><span><i class="line-swatch line-l"></i>L = {y=z=0}</span><span><i class="line-swatch line-g"></i>Γ: x²+(y−1)²=1, z=0</span><span>O = (0,0,0)</span></div>
+    </section>
+  </main>
+</body>
+</html>
