@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A stationary integral varifold with unique tangent cone given by a cross cone — Xuwen Zhang</title>
+  <meta name="description" content="An explicit five-surface stationary integral varifold in three-dimensional space whose unique tangent cone at the origin is a cross cone.">
+  <link rel="canonical" href="https://xuwenzhang-math.github.io/Homepage/cross-cone-varifold.html">
+  <link rel="stylesheet" href="styles.css?v=16">
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+  <style>
+    .cross-cone-figure iframe{height:800px}
+    @media(max-width:640px){.cross-cone-figure iframe{height:1080px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="site-header">
+    <nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="research.html">Research</a><a href="talks.html">Talks</a><a href="teaching.html">Teaching</a><a href="notes.html">Notes</a></nav>
+  </header>
+  <p class="small"><a href="notes.html">Notes</a> / <a href="notes.html#examples">Examples</a></p>
+  <article class="math-example">
+    <h2>A stationary integral varifold with unique tangent cone given by a cross cone</h2>
+    <p>We call the union of two distinct intersecting hyperplanes through the origin a <strong>cross cone</strong>.</p>
+    <p>In \(\mathbb R^3\), set</p>
+    <div class="math-display">
+      \[
+        a=\frac{\sqrt3}{2},\qquad h=\frac{\sqrt3}{4}\log3,\qquad
+        \rho(x,y)=\sqrt{x^2+(y-1)^2}.
+      \]
+    </div>
+    <p>Consider the following five surfaces:</p>
+    <div class="math-display">
+      \[
+      \begin{aligned}
+        \text{(planar region)}\quad S&=\{(x,y,z)\in\mathbb R^3:z=0,\ y\ge0,\ \rho(x,y)\ge1\},\\[6pt]
+        \text{(half-planes)}\quad P_\pm&=\{(x,y,z)\in\mathbb R^3:y\le0,\ z=\pm\sqrt3\,y\},\\[6pt]
+        \text{(catenoid pieces)}\quad C_+&=\{(x,y,z)\in\mathbb R^3:z\ge0,\ \rho(x,y)=a\cosh((z-h)/a)\},\\[6pt]
+        C_-&=\{(x,y,-z):(x,y,z)\in C_+\}.
+      \end{aligned}
+      \]
+    </div>
+    <p>Give each surface multiplicity one and define</p>
+    <div class="math-display">
+      \[V=|S|+|P_+|+|P_-|+|C_+|+|C_-|,\]
+    </div>
+    <p>where \(|M|\) denotes the varifold associated with the surface \(M\). Clearly, \(V\) is a stationary integral \(2\)-varifold in \(\mathbb R^3\). Its unique tangent cone at the origin is the cross cone</p>
+    <div class="math-display">
+      \[
+        C=|\Pi_+|+|\Pi_-|,\qquad
+        \Pi_\pm=\{(x,y,z)\in\mathbb R^3:z=\pm\sqrt3\,y\}.
+      \]
+    </div>
+    <figure class="example-figure cross-cone-figure">
+      <iframe src="figures/five-surfaces/index.html" title="Interactive 3D view of the five-surface varifold and its cross-cone tangent at the origin" sandbox="allow-scripts allow-downloads" loading="lazy"></iframe>
+      <figcaption>Drag to rotate and scroll to zoom. Adjust the blow-up scale to view \(V\) near the origin, or select “Show the limiting cone” to view \(C\). The figure shows \(V\) in \([-r,r]^3\), rescaled to \([-1,1]^3\); edges on the cube boundary are display cuts. <a href="figures/five-surfaces/index.html" target="_blank" rel="noopener">Open the 3D figure</a> · <a href="figures/five-surfaces/five_surfaces_3d.svg" target="_blank" rel="noopener">Static figure</a>.</figcaption>
+    </figure>
+  </article>
+  <footer class="page-meta"><p><strong>Last updated:</strong> 10 October 2026</p></footer>
+</main>
+</body>
+</html>
